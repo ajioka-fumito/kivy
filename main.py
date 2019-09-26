@@ -5,19 +5,25 @@ Config.set('graphics', 'width', '960')
 Config.set('graphics', 'height', '640')
 from kivy.properties import StringProperty 
 
-from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
+from kivy.core.window import Window
+from kivy.factory import Factory
 from kivy.uix.textinput import TextInput
+
+from kivy.lang import Builder
+Builder.load_file('./Login.kv')
+
 
 
 class MainWidget(FloatLayout):
-    source = StringProperty("./images/sample.jpg")    # プロパティの追加
-
+    source = StringProperty("./images/sample.jpg")
     def __init__(self, **kwargs):
+        #self.Login = Factory.Login()
         super(MainWidget, self).__init__(**kwargs)
+        
 
-    def buttonClicked(self):
-        self.source = "./images/sample1.jpg"
+    def buttonClicked_Login(self):
+        self.clear_widgets()
+        self.add_widget(self.Login)
 
 
 
